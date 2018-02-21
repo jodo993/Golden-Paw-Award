@@ -17,6 +17,15 @@ namespace Webber_Golden_Paw_Award
             InitializeComponent();
         }
 
+        // Tool tips to help user know what is expected
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            toolTip1.SetToolTip(signupFullNameTextBox, "Enter your full name here.");
+            toolTip1.SetToolTip(signupUsernameTextBox, "Enter a unique username that is easy to remember, but hard for others to guess.");
+            toolTip1.SetToolTip(linkAccoutToComputerCheckBox, "Link this computer to this account for quick login via the Login via Computer option on the login screen. " +
+                                                              "Check only if this is your computer.");
+        }
+        // Style the labels to let user know which selection is active
         private void loginLabel_MouseHover(object sender, EventArgs e)
         {
             loginLabel.Font = new Font("Arial", 10, FontStyle.Bold);
@@ -37,6 +46,9 @@ namespace Webber_Golden_Paw_Award
 
             loginLabel.Font = new Font("Arial", 10, FontStyle.Bold);
             signupLabel.Font = new Font("Arial", 8, FontStyle.Regular);
+
+            if (usernameTextBox.Text == "")
+                usernameTextBox.Text = "Username";
         }
 
         private void signupLabel_MouseHover(object sender, EventArgs e)
@@ -59,11 +71,32 @@ namespace Webber_Golden_Paw_Award
 
             signupLabel.Font = new Font("Arial", 10, FontStyle.Bold);
             loginLabel.Font = new Font("Arial", 8, FontStyle.Regular);
+
+            if (signupFullNameTextBox.Text == "")
+                signupFullNameTextBox.Text = "Full name";
+            if (signupUsernameTextBox.Text == "")
+                signupUsernameTextBox.Text = "Username";
         }
 
+        // Clear textbox placeholders when clicked
         private void usernameTextBox_MouseClick(object sender, MouseEventArgs e)
         {
             usernameTextBox.Clear();
         }
+
+        private void signupFullNameTextBox_Click(object sender, EventArgs e)
+        {
+            signupFullNameTextBox.Clear();
+            if (signupUsernameTextBox.Text == "")
+                signupUsernameTextBox.Text = "Username";
+        }
+
+        private void signupUsernameTextBox_Click(object sender, EventArgs e)
+        {
+            signupUsernameTextBox.Clear();
+            if (signupFullNameTextBox.Text == "")
+                signupFullNameTextBox.Text = "Full name";
+        }
+
     }
 }
